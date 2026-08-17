@@ -23,6 +23,14 @@ Complete all TODO sections in the source code:
 5. Create and test objects in `main()`.
 6. Add a student-created extension.
 
+## Implementation Documentation
+
+I created a parent class that represented a general vehicle and included class and instance variables for storing vehicle information. I then created a child class that represented a truck and inherited the make and model information from the parent class. The child class added bed length and towing capacity and overrode the `display_info()` method to provide more detailed information.
+
+I demonstrated class and instance namespaces by creating two truck objects and displaying their `__dict__` values. I also added a color attribute to only one object to show how individual instances could contain different data.
+
+I demonstrated shallow and deep copying using nested mutable data. The shallow copy shared the nested list with the original object, while the deep copy maintained its own separate copy. As a student-created extension, I added a `tow()` method to the child class that displayed when a truck was ready to tow.
+
 ## Discussion Board Reflection
 
 After completing the programming assignment, add this reflection to your initial discussion post in LEO.

@@ -25,7 +25,14 @@ from copy import copy, deepcopy
 # Replace the pass statement with your implementation.
 
 class ParentClass:
-    pass
+    vehicle_type = "Vehicle"
+
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def display_info(self):
+        return f"{self.make} {self.model}"
 
 
 # TODO 2:
@@ -41,7 +48,22 @@ class ParentClass:
 # Replace the pass statement with your implementation.
 
 class ChildClass(ParentClass):
-    pass
+    vehicle_category = "Truck"
+
+    def __init__(self, make, model, bed_length, towing_capacity):
+        super().__init__(make, model)
+        self.bed_length = bed_length
+        self.towing_capacity = towing_capacity
+
+    def display_info(self):
+        return (
+            f"{self.make} {self.model} - "
+            f"Bed Length: {self.bed_length} ft, "
+            f"Towing Capacity: {self.towing_capacity} lbs"
+        )
+
+    def tow(self):
+        return f"{self.make} {self.model} is ready to tow."
 
 
 # TODO 3:
@@ -57,7 +79,23 @@ class ChildClass(ParentClass):
 
 def demonstrate_namespaces():
     print("\n=== Namespace Demonstration ===")
-    print("TODO: Implement namespace demonstration")
+
+    truck1 = ChildClass("Ford", "F-150", 5.5, 10000)
+    truck2 = ChildClass("Chevrolet", "Silverado", 6.5, 9500)
+
+    print("Class variable through class:", ChildClass.vehicle_category)
+    print("Class variable through object:", truck1.vehicle_category)
+
+    truck1.color = "Blue"
+
+    print("\nTruck 1 namespace:")
+    print(truck1.__dict__)
+
+    print("\nTruck 2 namespace:")
+    print(truck2.__dict__)
+
+    print("\nChildClass namespace:")
+    print(ChildClass.__dict__)
 
 
 # TODO 4:
@@ -73,7 +111,28 @@ def demonstrate_namespaces():
 
 def demonstrate_copying():
     print("\n=== Copy Demonstration ===")
-    print("TODO: Implement shallow copy and deep copy demonstration")
+
+    original = ChildClass("Ford", "F-150", 5.5, 10000)
+    original.tools = ["Jack", "Wrench", ["Socket Set", "Screwdriver"]]
+
+    shallow_copy = copy(original)
+    deep_copy = deepcopy(original)
+
+    # A shallow copy creates a new object, but nested mutable data
+    # is still shared with the original object.
+    # A deep copy creates a completely separate copy,
+    # including all nested mutable data.
+
+    original.tools[2].append("Pliers")
+
+    print("Original object tools:")
+    print(original.tools)
+
+    print("\nShallow copy tools:")
+    print(shallow_copy.tools)
+
+    print("\nDeep copy tools:")
+    print(deep_copy.tools)
 
 
 # TODO 5:
@@ -89,13 +148,17 @@ def demonstrate_copying():
 def main():
     print("=== Unit 1 OOP Assignment ===")
 
-    print("\nTODO: Create and test your parent object")
+    print("\n=== Parent Object ===")
+    vehicle = ParentClass("Toyota", "Camry")
+    print(vehicle.display_info())
 
-    print("\nTODO: Create and test your child object")
+    print("\n=== Child Object ===")
+    truck = ChildClass("Ford", "F-150", 5.5, 10000)
+    print(truck.display_info())
+    print(truck.tow())
 
     demonstrate_namespaces()
     demonstrate_copying()
-
 
 if __name__ == "__main__":
     main()
