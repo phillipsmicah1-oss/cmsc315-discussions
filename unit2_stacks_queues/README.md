@@ -25,6 +25,10 @@ Complete all TODO sections:
 5. Create and test edge cases.
 6. Create a real-world scenario.
 
+## Implementation Documentation
+I implemented a stack using a Python list and a queue using collections.deque. The stack used push, pop, peek, and is_empty operations, while the queue used enqueue, dequeue, front, and is_empty operations.
+
+I demonstrated LIFO behavior by removing stack values in the reverse order they were added and demonstrated FIFO behavior by removing queue values in the same order they were added. I also tested empty stack and queue operations and verified that single-item structures became empty after removal. For the real-world examples, I used a stack to represent an undo history and a queue to represent customers waiting in line.
 ## Discussion Board Reflection
 
 After completing the programming assignment, add this reflection to your initial discussion post in LEO.
