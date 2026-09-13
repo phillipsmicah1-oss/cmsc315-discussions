@@ -20,6 +20,12 @@ This assignment compares linear search and binary search.
 5. Create a real-world search scenario.
 
 
+## Implementation Summary
+
+I implemented linear search by checking each value from the beginning of the list until the target was found. I implemented binary search by repeatedly reducing the sorted search area by half. Both algorithms returned the target's index when it was found and returned -1 when it was not found.
+
+I tested both algorithms using small and large sorted datasets. I also tested an empty list and a single-element list to demonstrate edge cases. For the real-world example, I searched a sorted collection of product identification numbers. The completed tests showed that both algorithms produced correct results, while binary search was more efficient for large sorted datasets.
+
 ## Discussion Board Reflection
 
 After completing the programming assignment, add this reflection to your initial discussion post in LEO.
