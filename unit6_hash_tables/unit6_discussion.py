@@ -31,9 +31,21 @@ def main():
     #    behaves like a hash table.
     # 4. Display the contents of the dictionary.
 
-
     print("\n=== INSERT OPERATIONS ===")
-    print("TODO: Create a dictionary and add multiple key-value pairs.")
+
+    # A Python dictionary works like a hash table by storing
+    # key-value pairs. Each supply name is a unique key, and the
+    # quantity is the value connected to that key.
+    fish_tank_inventory = {}
+
+    fish_tank_inventory["Minnows"] = 24
+    fish_tank_inventory["Worms"] = 12
+    fish_tank_inventory["Water Conditioner"] = 1
+    fish_tank_inventory["Fish Food"] = 2
+    fish_tank_inventory["Air Stones"] = 3
+
+    print("Starting fish-tank supply inventory:")
+    print(fish_tank_inventory)
 
     # ===============================
     # TODO (Student): LOOKUP OPERATIONS
@@ -45,7 +57,13 @@ def main():
     # 3. Add meaningful comments to explain how the lookup works.
 
     print("\n=== LOOKUP OPERATIONS ===")
-    print("TODO: Demonstrate successful key lookups.")
+
+    # Dictionary lookups use a key to quickly find its matching value.
+    minnow_quantity = fish_tank_inventory["Minnows"]
+    air_stone_quantity = fish_tank_inventory["Air Stones"]
+
+    print("Minnows in inventory:", minnow_quantity)
+    print("Air stones in inventory:", air_stone_quantity)
 
     # ===============================
     # TODO (Student): UPDATE OPERATIONS
@@ -58,7 +76,15 @@ def main():
     #    a new value.
 
     print("\n=== UPDATE OPERATIONS ===")
-    print("TODO: Demonstrate updating an existing key.")
+    print("Before updating minnows:")
+    print(fish_tank_inventory)
+
+    # Assigning a new value to an existing key replaces the old value.
+    # The dictionary does not create a duplicate "Minnows" key.
+    fish_tank_inventory["Minnows"] = 18
+
+    print("After updating minnows:")
+    print(fish_tank_inventory)
 
     # ===============================
     # TODO (Student): DELETE OPERATIONS
@@ -70,7 +96,15 @@ def main():
     # 3. Use comments to explain what happens when a key is removed.
 
     print("\n=== DELETE OPERATIONS ===")
-    print("TODO: Demonstrate deleting a key-value pair.")
+    print("Before removing worms:")
+    print(fish_tank_inventory)
+
+    # The del statement removes the key and its connected value
+    # from the dictionary.
+    del fish_tank_inventory["Worms"]
+
+    print("After removing worms:")
+    print(fish_tank_inventory)
 
     # ===============================
     # TODO (Student): EDGE CASES
@@ -87,8 +121,26 @@ def main():
     # Explain what happens in each case.
 
     print("\n=== EDGE CASES ===")
-    print("TODO: Demonstrate and explain edge cases.")
 
+    # get() safely looks up a missing key and returns None
+    # instead of causing a KeyError.
+    filter_quantity = fish_tank_inventory.get("Filter")
+    print("Looking up a missing filter:", filter_quantity)
+
+    # pop() with a default value safely attempts to remove a missing key.
+    # Because "Heater" is not present, no error occurs.
+    removed_heater = fish_tank_inventory.pop("Heater", None)
+    print("Trying to remove a missing heater:", removed_heater)
+
+    # Adding a key that was not previously in the dictionary creates
+    # a new key-value pair.
+    fish_tank_inventory["Fish Net"] = 1
+    print("After adding a new fish net:", fish_tank_inventory)
+
+    # Python handles collisions internally. If two keys produce the same
+    # hash location, the dictionary still keeps the correct key-value pairs.
+    print("\nHash tables make inventory lookups efficient because")
+    print("a supply can be found by its key instead of checking every item.")
 
 
 if __name__ == "__main__":
