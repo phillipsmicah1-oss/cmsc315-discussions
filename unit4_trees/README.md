@@ -21,6 +21,16 @@ This assignment introduces Binary Search Trees (BSTs) and recursive tree operati
 5. Demonstrate edge cases.
 6. Create a real-world BST example.
 
+
+## Implementation Summary
+
+- Built a Binary Search Tree to organize employee records by employee ID.
+- Inserted seven employee IDs into the tree using recursive insertion.
+- Performed an in-order traversal that displayed the IDs in sorted order.
+- Tested searches for employee IDs that existed and IDs that did not exist.
+- Demonstrated edge cases by traversing and searching an empty tree.
+- Added comments explaining BST insertion, searching, traversal, and efficiency.
+
 ## Discussion Board Reflection
 
 After completing the programming assignment, add this reflection to your initial discussion post in LEO.
