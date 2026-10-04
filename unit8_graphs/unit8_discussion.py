@@ -1,3 +1,4 @@
+
 """
 ===========================================================
 UNIT 8 DISCUSSION: BREADTH-FIRST SEARCH (BFS)
@@ -33,7 +34,28 @@ def bfs(graph, start):
     - How BFS differs from depth-first traversal.
     """
 
-    pass
+    # Return an empty list if the starting node does not exist.
+    if start not in graph:
+        return []
+
+    # A queue processes nodes in the order they are added (FIFO).
+    queue = deque([start])
+    visited = {start}
+    order = []
+
+    while queue:
+        current = queue.popleft()
+        order.append(current)
+
+        # Add unvisited neighbors to explore the next level.
+        for neighbor in graph.get(current, []):
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+    # BFS explores nearby nodes before moving deeper,
+    # while DFS follows one path before backtracking.
+    return order
 
 
 def main():
@@ -50,8 +72,20 @@ def main():
     # 4. Clearly display the graph structure.
     # 5. Use comments to explain what the nodes and edges represent.
 
+    # Nodes represent movie genres on a streaming platform.
+    # Edges connect genres with similar viewing preferences.
+    graph = {
+        "Action": ["Sci-Fi", "Thriller"],
+        "Sci-Fi": ["Action", "Fantasy"],
+        "Thriller": ["Action", "Drama"],
+        "Fantasy": ["Sci-Fi"],
+        "Drama": ["Thriller", "Documentary"],
+        "Documentary": ["Drama"]
+    }
+
     print("\n=== GRAPH STRUCTURE ===")
-    print("TODO: Create and display a graph.")
+    for node, neighbors in graph.items():
+        print(f"{node}: {neighbors}")
 
     # ===============================
     # TODO (Student): BFS TRAVERSAL
@@ -66,7 +100,18 @@ def main():
     #    and demonstrate the updated traversal.
 
     print("\n=== BFS TRAVERSAL ===")
-    print("TODO: Perform and explain BFS traversal.")
+
+    # Start with Action and explore its closest connections first.
+    start = "Action"
+    print("Starting node:", start)
+    print("Traversal order:", bfs(graph, start))
+
+    # Add a new genre and connect it to Drama.
+    graph["Comedy"] = ["Drama"]
+    graph["Drama"].append("Comedy")
+
+    print("\nAfter adding Comedy:")
+    print("Updated traversal:", bfs(graph, start))
 
     # ===============================
     # TODO (Student): EDGE CASES
@@ -84,8 +129,17 @@ def main():
     # Explain what happens in each case.
 
     print("\n=== EDGE CASE TESTS ===")
-    print("TODO: Demonstrate and explain edge cases.")
 
+    # Edge case 1: An empty graph has no nodes to visit.
+    empty_graph = {}
+    print("Empty graph:", bfs(empty_graph, "Action"))
+
+    # Edge case 2: A missing starting node returns an empty list.
+    print("Missing start node:", bfs(graph, "Horror"))
+
+    # Edge case 3: A graph with one node visits that node only.
+    single_graph = {"Comedy": []}
+    print("Single-node graph:", bfs(single_graph, "Comedy"))
 
 
 if __name__ == "__main__":
